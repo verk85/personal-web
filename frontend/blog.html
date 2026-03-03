@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Jorge Soto</title>
+    <meta name="description" content="Thoughts, ramblings, and explorations on tech, philosophy, and digital architecture.">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Theme setup script must run before body render to prevent flash -->
+    <script src="js/theme.js"></script>
+    <script src="js/blog.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <header style="position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; background: var(--bg-glass); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border-bottom: 1px solid var(--border-color);">
+        <div class="container" style="padding: 1rem 0; display: flex; justify-content: space-between; align-items: center;">
+            <div class="logo" style="font-weight: 700; font-size: 1.5rem; letter-spacing: -0.05em;">
+                <a href="index.html" style="color: inherit; text-decoration: none;">JORGE SOTO</a>
+            </div>
+            <nav>
+                <ul style="display: flex; gap: 2rem; list-style: none;">
+                    <li><a href="index.html#philosophy">Philosophy</a></li>
+                    <li><a href="index.html#work">Work</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li>
+                        <button onclick="window.toggleTheme()" class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;">
+                            Toggle Theme
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Smaller Hero for Subpages -->
+        <section id="hero" class="container section" style="min-height: 40vh; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; text-align: center; padding-top: 150px;">
+            <div class="hero-content" style="max-width: 600px; position: relative; z-index: 10;">
+                <h1 style="font-size: 3.5rem; margin-bottom: 1rem; background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    Thoughts & Ramblings
+                </h1>
+                <p style="font-size: 1.25rem; color: var(--text-secondary);">
+                    Exploring the intersection of divergent thinking, technology, and system architecture.
+                </p>
+            </div>
+        </section>
+
+        <!-- Blog Feed Container -->
+        <section id="blog" class="section container" style="padding-top: 0;">
+            <div id="blog-container" style="display: flex; flex-direction: column; gap: 2rem; max-width: 800px; margin: 0 auto;">
+                <!-- Blog posts will be dynamically inserted here -->
+            </div>
+
+            <!-- Reused Template from Index -->
+            <template id="blog-post-template">
+                <article style="border-bottom: 1px solid var(--border-color); padding-bottom: 2rem;">
+                    <span class="blog-category" style="color: var(--accent-main); font-size: 0.9rem; font-weight: 600;"><!-- Category --></span>
+                    <span class="blog-date" style="color: var(--text-muted); font-size: 0.8rem; margin-left: 1rem;"><!-- Date --></span>
+                    <h3 class="blog-title" style="font-size: 1.75rem; margin: 0.5rem 0;"><!-- Title --></h3>
+                    <p class="blog-description" style="color: var(--text-secondary); margin-bottom: 1rem;"><!-- Description --></p>
+                    <a href="#" class="blog-link" style="font-weight: 600;">Read More &rarr;</a>
+                </article>
+            </template>
+        </section>
+    </main>
+
+    <footer style="background: var(--bg-secondary); padding: 3rem 0; margin-top: 4rem; border-top: 1px solid var(--border-color);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="color: var(--text-secondary);">
+                &copy; 2024 Jorge Soto. Built with intention.
+            </div>
+            <div style="display: flex; gap: 1.5rem;">
+                <a href="https://www.linkedin.com/in/jorgesoto85/" style="color: var(--text-muted);">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+:root {
+    /* Core Base Colors - Dark Mode (Default) */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #121212;
+    --bg-glass: rgba(18, 18, 18, 0.3);
+    
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --text-muted: #52525b;
+
+    /* Brand Accents */
+    --accent-main: #7B2CBF; /* Deep Purple */
+    --accent-glow: #4CC9F0; /* Neon Blue */
+    --accent-gradient: linear-gradient(135deg, var(--accent-main), var(--accent-glow));
+
+    /* Functional */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(123, 44, 191, 0.3);
+
+    /* Typography */
+    --font-heading: 'Inter', sans-serif; /* Placeholder, will import Google Fonts */
+    --font-body: 'Inter', sans-serif;
+}
+
+[data-theme="light"] {
+    /* Core Base Colors - Light Mode */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4f4f5;
+    --bg-glass: rgba(255, 255, 255, 0.3);
+
+    --text-primary: #18181b;
+    --text-secondary: #52525b;
+    --text-muted: #a1a1aa;
+
+    /* Brand Accents - Adjusted for contrast */
+    --accent-main: #5a189a; 
+    --accent-glow: #0096c7;
+    
+    /* Functional */
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 0 20px rgba(90, 24, 154, 0.15);
+}

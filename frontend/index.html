@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jorge Soto | Software Engineer</title>
+    <meta name="description" content="Personal portfolio and blog exploring divergent thinking and digital architecture.">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Theme setup script must run before body render to prevent flash -->
+    <script src="js/theme.js"></script>
+    <script src="js/projects.js" defer></script>
+    <script src="js/blog.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <header style="position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; background: var(--bg-glass); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border-bottom: 1px solid var(--border-color);">
+        <div class="container" style="padding: 1rem 0; display: flex; justify-content: space-between; align-items: center;">
+            <div class="logo" style="font-weight: 700; font-size: 1.5rem; letter-spacing: -0.05em;">
+                JORGE SOTO
+            </div>
+            <nav>
+                <ul style="display: flex; gap: 2rem; list-style: none;">
+                    <li><a href="#philosophy">Philosophy</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li>
+                        <button onclick="window.toggleTheme()" class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;">
+                            Toggle Theme
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="container section" style="min-height: 100vh; display: flex; align-items: center; position: relative; z-index: 1;">
+            <div class="hero-content" style="max-width: 600px; position: relative; z-index: 10;">
+                <h1 style="font-size: 4rem; margin-bottom: 1.5rem; background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    Software Engineer
+                </h1>
+                <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2.5rem;">
+                    I thrive on solving problems with state-of-the-art technology, from designing software to intelligent systems.
+                </p>
+                <div class="cta-group">
+                    <a href="#work" class="btn btn-primary">View Projects</a>
+                    <a href="#philosophy" class="btn btn-outline" style="margin-left: 1rem;">Read Philosophy</a>
+                </div>
+            </div>
+            <!-- Canvas container for neural network background -->
+            <canvas id="neural-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></canvas>
+        </section>
+
+        <section id="philosophy" class="section container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Life Philosophy</h2>
+                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    Life is a video game where you are the main character!  
+                    As a curious mind, I am constantly grinding for experience, to keep growing and evolving.
+                </p>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">
+                    We are not meant to follow a straight line, we are meant to be divergent and explore all the paths.
+                </p>
+            </div>
+        </section>
+
+        <section id="work" class="section container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 3rem; text-align: center;">Work Experience</h2>
+            <div id="projects-container" class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+
+            <template id="project-card-template">
+                <article style="background: var(--bg-secondary); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
+                    <div class="project-preview" style="height: 200px; background: var(--bg-primary); margin-bottom: 1.5rem; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                        <!-- Preview Text will be inserted here -->
+                    </div>
+                    <h3 class="project-title" style="margin-bottom: 0.5rem;"><!-- Title will be inserted here --></h3>
+                    <p class="project-description" style="color: var(--text-secondary); margin-bottom: 1.5rem;"><!-- Description will be inserted here --></p>
+                    <a href="#" class="btn-outline project-link" style="font-size: 0.9rem;">Show </a>
+                </article>
+            </template>
+        </section>
+
+        <section id="blog" class="section container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 3rem; text-align: center;">Latest Thoughts</h2>
+            <div id="blog-container" data-limit="2" style="display: flex; flex-direction: column; gap: 2rem; max-width: 800px; margin: 0 auto;">
+                <!-- Blog posts will be dynamically inserted here -->
+            </div>
+
+            <template id="blog-post-template">
+                <article style="border-bottom: 1px solid var(--border-color); padding-bottom: 2rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                        <span class="blog-category" style="color: var(--accent-main); font-size: 0.9rem; font-weight: 600;"><!-- Category --></span>
+                        <span class="blog-date" style="color: var(--text-muted); font-size: 0.8rem;"><!-- Date --></span>
+                    </div>
+                    <h3 class="blog-title" style="font-size: 1.75rem; margin: 0.5rem 0;"><!-- Title --></h3>
+                    <p class="blog-description" style="color: var(--text-secondary); margin-bottom: 1rem;"><!-- Description --></p>
+                    <a href="#" class="blog-link" style="font-weight: 600;">Read More &rarr;</a>
+                </article>
+            </template>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="blog.html" class="btn btn-outline">View All Posts &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--bg-secondary); padding: 3rem 0; margin-top: 4rem; border-top: 1px solid var(--border-color);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="color: var(--text-secondary);">
+                &copy; 2024 Jorge Soto. Built with intention.
+            </div>
+            <div style="display: flex; gap: 1.5rem;">
+                <!-- <a href="https://github.com/jorgesoto85" style="color: var(--text-muted);">GitHub</a> -->
+                <a href="https://www.linkedin.com/in/jorgesoto85/" style="color: var(--text-muted);">LinkedIn</a>
+                <!-- <a href="#" style="color: var(--text-muted);">Twitter</a> -->
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/neural-bg.js"></script> <!-- To be implemented -->
+</body>
+</html>

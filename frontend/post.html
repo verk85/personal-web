@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title will be dynamically set by JS -->
+    <title>Reading | Jorge Soto</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Theme setup script must run before body render to prevent flash -->
+    <script src="js/theme.js"></script>
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/blog.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <header style="position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; background: var(--bg-glass); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border-bottom: 1px solid var(--border-color);">
+        <div class="container" style="padding: 1rem 0; display: flex; justify-content: space-between; align-items: center;">
+            <div class="logo" style="font-weight: 700; font-size: 1.5rem; letter-spacing: -0.05em;">
+                <a href="index.html" style="color: inherit; text-decoration: none;">JORGE SOTO</a>
+            </div>
+            <nav>
+                <ul style="display: flex; gap: 2rem; list-style: none;">
+                    <li><a href="index.html#philosophy">Philosophy</a></li>
+                    <li><a href="index.html#work">Work</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li>
+                        <button onclick="window.toggleTheme()" class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;">
+                            Toggle Theme
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section container" style="padding-top: 150px; max-width: 800px; margin: 0 auto; min-height: 70vh;">
+            <a href="blog.html" style="display: inline-block; margin-bottom: 2rem; color: var(--text-muted); text-decoration: none; font-weight: 600;">
+                &larr; Back to Blog
+            </a>
+
+            <!-- Content Area: Will be populated by JS based on ?id= -->
+            <article id="single-post-container">
+                <span id="post-category" style="color: var(--accent-main); font-size: 0.9rem; font-weight: 600;"></span>
+                <span id="post-date" style="color: var(--text-muted); font-size: 0.9rem; margin-left: 1rem;"></span>
+                <h1 id="post-title" style="font-size: 3rem; margin: 1rem 0; line-height: 1.2;"></h1>
+                <div id="post-content" style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-top: 2rem;">
+                    <!-- Full Content renders here -->
+                </div>
+            </article>
+
+            <!-- Error State if ID is wrong -->
+            <div id="post-error" style="display: none; text-align: center; padding: 4rem 0;">
+                <h2>Post Not Found.</h2>
+                <p>The neural pathways to this thought seem to be disconnected.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--bg-secondary); padding: 3rem 0; margin-top: 4rem; border-top: 1px solid var(--border-color);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="color: var(--text-secondary);">
+                &copy; 2024 Jorge Soto. Built with intention.
+            </div>
+            <div style="display: flex; gap: 1.5rem;">
+                <a href="https://www.linkedin.com/in/jorgesoto85/" style="color: var(--text-muted);">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
