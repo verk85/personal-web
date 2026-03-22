@@ -6,14 +6,17 @@
     <title>Blog | Jorge Soto</title>
     <meta name="description" content="Thoughts, ramblings, and explorations on tech, philosophy, and digital architecture.">
     <link rel="stylesheet" href="css/style.css">
-    
+
     <!-- Theme setup script must run before body render to prevent flash -->
     <script src="js/theme.js"></script>
     <script src="js/blog.js" defer></script>
     <script src="js/main.js" defer></script>
 </head>
 <body>
-    <header style="position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; background: var(--bg-glass); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border-bottom: 1px solid var(--border-color);">
+    <!-- Fixed Neural Network Background — same animation as homepage, sticky on scroll -->
+    <canvas id="neural-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
+
+    <header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: var(--bg-glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color);">
         <div class="container" style="padding: 1rem 0; display: flex; justify-content: space-between; align-items: center;">
             <div class="logo" style="font-weight: 700; font-size: 1.5rem; letter-spacing: -0.05em;">
                 <a href="index.html" style="color: inherit; text-decoration: none;">JORGE SOTO</a>
@@ -33,8 +36,8 @@
         </div>
     </header>
 
-    <main>
-        <!-- Smaller Hero for Subpages -->
+    <main style="position: relative; z-index: 1;">
+        <!-- Hero — floats over the animation, no card needed here -->
         <section id="hero" class="container section" style="min-height: 40vh; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; text-align: center; padding-top: 150px;">
             <div class="hero-content" style="max-width: 600px; position: relative; z-index: 10;">
                 <h1 style="font-size: 3.5rem; margin-bottom: 1rem; background: var(--accent-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
@@ -46,26 +49,35 @@
             </div>
         </section>
 
-        <!-- Blog Feed Container -->
-        <section id="blog" class="section container" style="padding-top: 0;">
+        <!-- Blog Feed — each post card mirrors the project-card-template style -->
+        <section id="blog" class="section container" style="padding-top: 0; padding-bottom: 6rem;">
+
+            <!-- Category Tabs — auto-generated from blogData in blog.js.
+                 To add a new section, just use a new category string on a post there. -->
+            <div id="category-tabs-container" style="max-width: 800px; margin: 0 auto 2.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                <!-- Tabs injected by renderCategoryTabs() in main.js -->
+            </div>
+
             <div id="blog-container" style="display: flex; flex-direction: column; gap: 2rem; max-width: 800px; margin: 0 auto;">
                 <!-- Blog posts will be dynamically inserted here -->
             </div>
 
-            <!-- Reused Template from Index -->
+            <!-- Card-style template — mirrors project-card-template -->
             <template id="blog-post-template">
-                <article style="border-bottom: 1px solid var(--border-color); padding-bottom: 2rem;">
-                    <span class="blog-category" style="color: var(--accent-main); font-size: 0.9rem; font-weight: 600;"><!-- Category --></span>
-                    <span class="blog-date" style="color: var(--text-muted); font-size: 0.8rem; margin-left: 1rem;"><!-- Date --></span>
-                    <h3 class="blog-title" style="font-size: 1.75rem; margin: 0.5rem 0;"><!-- Title --></h3>
-                    <p class="blog-description" style="color: var(--text-secondary); margin-bottom: 1rem;"><!-- Description --></p>
-                    <a href="#" class="blog-link" style="font-weight: 600;">Read More &rarr;</a>
+                <article style="background: var(--bg-glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                        <span class="blog-category" style="color: var(--accent-main); font-size: 0.9rem; font-weight: 600;"><!-- Category --></span>
+                        <span class="blog-date" style="color: var(--text-muted); font-size: 0.8rem;"><!-- Date --></span>
+                    </div>
+                    <h3 class="blog-title" style="font-size: 1.75rem; margin: 0 0 0.75rem;"><!-- Title --></h3>
+                    <p class="blog-description" style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;"><!-- Description --></p>
+                    <a href="#" class="blog-link btn-outline" style="display: inline-block; padding: 0.5rem 1.25rem; font-size: 0.9rem; font-weight: 600; border-radius: 50px;">Read More &rarr;</a>
                 </article>
             </template>
         </section>
     </main>
 
-    <footer style="background: var(--bg-secondary); padding: 3rem 0; margin-top: 4rem; border-top: 1px solid var(--border-color);">
+    <footer style="position: relative; z-index: 1; background: var(--bg-glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 3rem 0; border-top: 1px solid var(--border-color);">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
             <div style="color: var(--text-secondary);">
                 &copy; 2024 Jorge Soto. Built with intention.
@@ -75,5 +87,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="js/neural-bg.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
     <!-- Title will be dynamically set by JS -->
     <title>Reading | Jorge Soto</title>
     <link rel="stylesheet" href="css/style.css">
-    
+
     <!-- Theme setup script must run before body render to prevent flash -->
     <script src="js/theme.js"></script>
     <!-- Markdown Parser -->
@@ -15,7 +15,10 @@
     <script src="js/main.js" defer></script>
 </head>
 <body>
-    <header style="position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; background: var(--bg-glass); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border-bottom: 1px solid var(--border-color);">
+    <!-- Fixed Neural Network Background — same animation as homepage, sticky on scroll -->
+    <canvas id="neural-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
+
+    <header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: var(--bg-glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color);">
         <div class="container" style="padding: 1rem 0; display: flex; justify-content: space-between; align-items: center;">
             <div class="logo" style="font-weight: 700; font-size: 1.5rem; letter-spacing: -0.05em;">
                 <a href="index.html" style="color: inherit; text-decoration: none;">JORGE SOTO</a>
@@ -35,18 +38,20 @@
         </div>
     </header>
 
-    <main>
-        <section class="section container" style="padding-top: 150px; max-width: 800px; margin: 0 auto; min-height: 70vh;">
-            <a href="blog.html" style="display: inline-block; margin-bottom: 2rem; color: var(--text-muted); text-decoration: none; font-weight: 600;">
+    <main style="position: relative; z-index: 1;">
+        <section class="section container" style="padding-top: 120px; padding-bottom: 6rem; max-width: 860px; margin: 0 auto; min-height: 70vh;">
+            <a href="blog.html" style="display: inline-block; margin-bottom: 2rem; color: var(--text-muted); text-decoration: none; font-weight: 600; transition: color 0.2s ease;">
                 &larr; Back to Blog
             </a>
 
-            <!-- Content Area: Will be populated by JS based on ?id= -->
-            <article id="single-post-container">
-                <span id="post-category" style="color: var(--accent-main); font-size: 0.9rem; font-weight: 600;"></span>
-                <span id="post-date" style="color: var(--text-muted); font-size: 0.9rem; margin-left: 1rem;"></span>
-                <h1 id="post-title" style="font-size: 3rem; margin: 1rem 0; line-height: 1.2;"></h1>
-                <div id="post-content" style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-top: 2rem;">
+            <!-- Post card — mirrors project-card-template framing -->
+            <article id="single-post-container" style="background: var(--bg-glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem;">
+                    <span id="post-category" style="color: var(--accent-main); font-size: 0.9rem; font-weight: 600;"></span>
+                    <span id="post-date" style="color: var(--text-muted); font-size: 0.9rem;"></span>
+                </div>
+                <h1 id="post-title" style="font-size: 3rem; margin: 0 0 2rem; line-height: 1.2;"></h1>
+                <div id="post-content" style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
                     <!-- Full Content renders here -->
                 </div>
             </article>
@@ -59,7 +64,7 @@
         </section>
     </main>
 
-    <footer style="background: var(--bg-secondary); padding: 3rem 0; margin-top: 4rem; border-top: 1px solid var(--border-color);">
+    <footer style="position: relative; z-index: 1; background: var(--bg-glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 3rem 0; border-top: 1px solid var(--border-color);">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
             <div style="color: var(--text-secondary);">
                 &copy; 2024 Jorge Soto. Built with intention.
@@ -69,5 +74,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="js/neural-bg.js"></script>
 </body>
 </html>

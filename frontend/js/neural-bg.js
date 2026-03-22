@@ -100,26 +100,33 @@ const initParticles = () => {
 
 const resize = () => {
     const isMobile = window.innerWidth < 768;
-    
-    // Use window width on desktop, parent width on mobile
-    width = canvas.width = isMobile ? canvas.parentElement.offsetWidth : window.innerWidth;
-    height = canvas.height = canvas.parentElement.offsetHeight;
-    
-    // Break out of the parent container on desktop to span full screen width
-    if (!isMobile) {
-        canvas.style.width = '100vw';
-        canvas.style.left = '50%';
-        canvas.style.transform = 'translateX(-50%)';
+    const isFixed = getComputedStyle(canvas).position === 'fixed';
+
+    if (isFixed) {
+        // Fixed/sticky canvas: always fill the full viewport
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
     } else {
-        canvas.style.width = '100%';
-        canvas.style.left = '0';
-        canvas.style.transform = 'none';
+        // Absolutely-positioned canvas inside a section
+        width = canvas.width = isMobile ? canvas.parentElement.offsetWidth : window.innerWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+
+        // Break out of the parent container on desktop to span full screen width
+        if (!isMobile) {
+            canvas.style.width = '100vw';
+            canvas.style.left = '50%';
+            canvas.style.transform = 'translateX(-50%)';
+        } else {
+            canvas.style.width = '100%';
+            canvas.style.left = '0';
+            canvas.style.transform = 'none';
+        }
     }
-    
+
     // Adjust config for mobile
     config.particleCount = isMobile ? 40 : 60;
     config.connectionDistance = isMobile ? 100 : 150;
-    
+
     updateColors(); // Ensure colors are set
     initParticles();
 };

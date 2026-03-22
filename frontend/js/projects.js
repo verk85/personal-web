@@ -5,10 +5,10 @@ const projectsData = [
         previewText: "WSI",
         link: "https://www.williams-sonomainc.com/"
     },
-    {
-        title: "Astrocheese Studios",
-        description: "Creative studio for digital content.",
-        previewText: "Astrocheese Studios",
-        link: "http://www.astrocheesestudios.com/"
-    }
+    // {
+    //     title: "Astrocheese Studios",
+    //     description: "Creative studio for digital content.",
+    //     previewText: "Astrocheese Studios",
+    //     link: "http://www.astrocheesestudios.com/"
+    // }
 ];

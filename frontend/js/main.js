@@ -4,16 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Navigation Toggle
     const nav = document.querySelector('nav');
     const headerContainer = document.querySelector('header .container');
-    
+
     // Create Hamburger Button dynamically
     const menuBtn = document.createElement('button');
     menuBtn.className = 'mobile-menu-btn';
     menuBtn.innerHTML = '☰'; // Simple hamburger icon
     menuBtn.setAttribute('aria-label', 'Toggle navigation');
-    
+
     // Insert before nav
     headerContainer.insertBefore(menuBtn, nav);
-    
+
     menuBtn.addEventListener('click', () => {
         nav.classList.toggle('active');
         menuBtn.innerHTML = nav.classList.contains('active') ? '✕' : '☰';
@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const blogContainer = document.getElementById('blog-container');
     if (blogContainer) {
         const limit = blogContainer.getAttribute('data-limit');
+        // Category tabs only exist on blog.html (not on the homepage preview)
+        renderCategoryTabs();
         renderBlogPosts(limit ? parseInt(limit, 10) : undefined);
     }
 
@@ -53,40 +55,87 @@ function renderProjects() {
 
     projectsData.forEach(project => {
         const clone = template.content.cloneNode(true);
-        
-        // Populate the clone with project data
+
         const titleEl = clone.querySelector('.project-title');
         if (titleEl) titleEl.textContent = project.title;
-        
+
         const descEl = clone.querySelector('.project-description');
         if (descEl) descEl.textContent = project.description;
-        
+
         const previewEl = clone.querySelector('.project-preview');
         if (previewEl) previewEl.textContent = project.previewText;
-        
+
         const linkEl = clone.querySelector('.project-link');
         if (linkEl) linkEl.href = project.link;
-        
-        // Append the populated clone to the container
+
         container.appendChild(clone);
     });
 }
 
-// Render dynamic blog posts from blogData array
-// limit: optional number of posts to render (shows all if omitted)
-function renderBlogPosts(limit) {
+// Render category filter tabs on blog.html
+// Tabs are auto-generated from the unique categories present in blogData —
+// no HTML changes needed when adding new categories, just update blog.js.
+function renderCategoryTabs() {
+    const container = document.getElementById('category-tabs-container');
+    if (!container || typeof blogData === 'undefined') return;
+
+    // Collect unique categories in insertion order (preserves blog.js ordering)
+    const seen = new Set();
+    const categories = ['All'];
+    blogData.forEach(p => {
+        if (!seen.has(p.category)) {
+            seen.add(p.category);
+            categories.push(p.category);
+        }
+    });
+
+    categories.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.textContent = cat;
+        btn.className = 'category-tab';
+        btn.dataset.category = cat;
+        if (cat === 'All') btn.classList.add('active');
+
+        btn.addEventListener('click', () => {
+            container.querySelectorAll('.category-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderBlogPosts(undefined, cat === 'All' ? null : cat);
+        });
+
+        container.appendChild(btn);
+    });
+}
+
+// Render dynamic blog posts from blogData array.
+// limit: optional number of posts to render (renders all if omitted)
+// categoryFilter: optional category string to filter by (renders all if null/undefined)
+function renderBlogPosts(limit, categoryFilter) {
     const container = document.getElementById('blog-container');
     const template = document.getElementById('blog-post-template');
 
-    // Make sure we have the container, template, and data before proceeding
     if (!container || !template || typeof blogData === 'undefined') return;
 
-    const postsToRender = limit ? blogData.slice(0, limit) : blogData;
+    // Clear any previously rendered posts before re-rendering
+    container.innerHTML = '';
+
+    let postsToRender = limit ? blogData.slice(0, limit) : [...blogData];
+
+    if (categoryFilter) {
+        postsToRender = postsToRender.filter(p => p.category === categoryFilter);
+    }
+
+    // Graceful empty state — shown when a category has no posts yet
+    if (postsToRender.length === 0) {
+        const empty = document.createElement('p');
+        empty.style.cssText = 'color: var(--text-muted); text-align: center; padding: 3rem 0;';
+        empty.textContent = 'Nothing here yet — check back soon.';
+        container.appendChild(empty);
+        return;
+    }
 
     postsToRender.forEach(post => {
         const clone = template.content.cloneNode(true);
-        
-        // Populate the clone with blog post data
+
         const categoryEl = clone.querySelector('.blog-category');
         if (categoryEl) categoryEl.textContent = post.category;
 
@@ -95,14 +144,13 @@ function renderBlogPosts(limit) {
 
         const titleEl = clone.querySelector('.blog-title');
         if (titleEl) titleEl.textContent = post.title;
-        
+
         const descEl = clone.querySelector('.blog-description');
         if (descEl) descEl.textContent = post.description;
-        
+
         const linkEl = clone.querySelector('.blog-link');
         if (linkEl) linkEl.href = `post.html?id=${post.id}`;
-        
-        // Append the populated clone to the container
+
         container.appendChild(clone);
     });
 }
@@ -111,7 +159,7 @@ function renderBlogPosts(limit) {
 async function renderSinglePost() {
     const singlePostContainer = document.getElementById('single-post-container');
     const errorContainer = document.getElementById('post-error');
-    
+
     // Check if we are actually on the post page
     if (!singlePostContainer || !errorContainer || typeof blogData === 'undefined') return;
 
@@ -125,28 +173,28 @@ async function renderSinglePost() {
     if (post) {
         // Set document title
         document.title = `${post.title} | Jorge Soto`;
-        
+
         // Populate the DOM metadata
         document.getElementById('post-category').textContent = post.category;
         document.getElementById('post-date').textContent = post.date;
         document.getElementById('post-title').textContent = post.title;
-        
+
         // Fetch the corresponding markdown file and render it
         try {
             const response = await fetch(`posts/${post.id}.md`);
             if (!response.ok) throw new Error('Post content not found');
-            
+
             const markdownText = await response.text();
-            
-            // Parse Markdown to HTML if marked is loaded, otherwise just drop in the raw text
+
+            // Parse Markdown to HTML if marked is loaded, otherwise drop in raw text
             const htmlContent = typeof marked !== 'undefined' ? marked.parse(markdownText) : markdownText;
-            
+
             document.getElementById('post-content').innerHTML = htmlContent;
         } catch (error) {
             console.error(error);
             document.getElementById('post-content').innerHTML = "<p><em>Sorry, we couldn't load the content for this post.</em></p>";
         }
-        
+
     } else {
         // Handle post not found
         singlePostContainer.style.display = 'none';
