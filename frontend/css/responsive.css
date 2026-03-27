@@ -7,8 +7,37 @@
         flex-wrap: wrap;
     }
 
-    nav {
+    .logo {
+        order: 1;
+    }
+
+    #theme-toggle-btn {
+        order: 2;
+        margin-left: auto !important;
+        margin-right: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-menu-btn {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        line-height: 1;
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: 0;
+        cursor: pointer;
         order: 3;
+    }
+
+    nav {
+        order: 4;
         width: 100%;
         display: none; /* Hidden by default on mobile */
         margin-top: 1.5rem;
@@ -30,16 +59,6 @@
     
     nav ul li {
         text-align: center;
-    }
-    
-    /* Hamburger Button (Added via JS or HTML) */
-    .mobile-menu-btn {
-        display: block !important;
-        background: transparent;
-        border: none;
-        color: var(--text-primary);
-        font-size: 1.5rem;
-        cursor: pointer;
     }
 }
 
