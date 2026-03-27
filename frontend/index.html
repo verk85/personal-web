@@ -10,7 +10,6 @@
     <!-- Theme setup script must run before body render to prevent flash -->
     <script src="js/theme.js"></script>
     <script src="js/projects.js" defer></script>
-    <script src="js/blog.js" defer></script>
     <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -89,14 +88,14 @@
             </div>
 
             <template id="blog-post-template">
-                <article style="border-bottom: 1px solid var(--border-color); padding-bottom: 2rem;">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                <article style="background: var(--bg-glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
                         <span class="blog-category" style="color: var(--accent-main); font-size: 0.9rem; font-weight: 600;"><!-- Category --></span>
                         <span class="blog-date" style="color: var(--text-muted); font-size: 0.8rem;"><!-- Date --></span>
                     </div>
-                    <h3 class="blog-title" style="font-size: 1.75rem; margin: 0.5rem 0;"><!-- Title --></h3>
-                    <p class="blog-description" style="color: var(--text-secondary); margin-bottom: 1rem;"><!-- Description --></p>
-                    <a href="#" class="blog-link" style="font-weight: 600;">Read More &rarr;</a>
+                    <h3 class="blog-title" style="font-size: 1.75rem; margin: 0 0 0.75rem;"><!-- Title --></h3>
+                    <p class="blog-description" style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;"><!-- Description --></p>
+                    <a href="#" class="blog-link btn-outline" style="display: inline-block; padding: 0.5rem 1.25rem; font-size: 0.9rem; font-weight: 600; border-radius: 50px;">Read More &rarr;</a>
                 </article>
             </template>
 

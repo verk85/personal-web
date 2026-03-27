@@ -1,0 +1,8 @@
+{
+    "name": "personal-web",
+    "private": true,
+    "scripts": {
+        "build": "node scripts/build-blog.js",
+        "dev": "cd frontend && python3 -m http.server 8080"
+    }
+}

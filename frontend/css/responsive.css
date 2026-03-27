@@ -62,18 +62,34 @@
     }
 
     h1 {
-        font-size: 2.5rem !important; 
+        font-size: 2rem !important; 
         line-height: 1.1;
         word-wrap: break-word; /* Ensure long words don't overflow */
     }
 
     .section {
-        padding: 3rem 0;
+        padding: 2rem 0;
+    }
+
+    #hero {
+        padding-top: 100px !important;
+        min-height: auto !important;
     }
 
     .hero-content {
-        padding-top: 2rem;
+        padding-top: 1rem;
         width: 100%;
+    }
+
+    #category-tabs-container {
+        margin-top: 2rem; /* Add spacing below hero text on mobile */
+    }
+
+    .blog-link {
+        width: 100%;
+        text-align: center;
+        display: block !important;
+        box-sizing: border-box;
     }
     
     /* Stack CTA buttons on mobile */

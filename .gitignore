@@ -1,2 +1,7 @@
 # Ignore the temporary agents communication directory
 .agents
+CLAUDE.MD
+
+# Auto-generated build artifacts — always regenerated from source .md files
+frontend/posts/manifest.json
+frontend/js/blog.js
