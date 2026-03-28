@@ -3,6 +3,7 @@
     --bg-primary: #0a0a0a;
     --bg-secondary: #121212;
     --bg-glass: rgba(18, 18, 18, 0.3);
+    --bg-overlay: rgba(10, 10, 10, 0.95);
     
     --text-primary: #ffffff;
     --text-secondary: #a1a1aa;
@@ -14,10 +15,14 @@
     --accent-gradient: linear-gradient(135deg, var(--accent-main), var(--accent-glow));
 
     /* Functional */
-    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.08);
     --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
     --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
     --shadow-glow: 0 0 20px rgba(123, 44, 191, 0.3);
+    
+    /* UX/UI Premium Glass Effects */
+    --glass-noise: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.04"/%3E%3C/svg%3E');
+    --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 
     /* Typography */
     --font-heading: 'Inter', sans-serif; /* Placeholder, will import Google Fonts */
@@ -26,21 +31,26 @@
 
 [data-theme="light"] {
     /* Core Base Colors - Light Mode */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f4f4f5;
-    --bg-glass: rgba(255, 255, 255, 0.3);
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.4);
+    --bg-overlay: rgba(248, 250, 252, 0.95);
 
-    --text-primary: #18181b;
-    --text-secondary: #52525b;
-    --text-muted: #a1a1aa;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
 
     /* Brand Accents - Adjusted for contrast */
-    --accent-main: #5a189a; 
-    --accent-glow: #0096c7;
+    --accent-main: #4c1d95; /* Darker purple */
+    --accent-glow: #0284c7; /* Darker blue for contrast on light background */
     
     /* Functional */
-    --border-color: rgba(0, 0, 0, 0.1);
-    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --shadow-glow: 0 0 20px rgba(90, 24, 154, 0.15);
+    --border-color: rgba(0, 0, 0, 0.08);
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    --shadow-glow: 0 0 20px rgba(76, 29, 149, 0.15);
+    
+    /* UX/UI Premium Glass Effects */
+    --glass-noise: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.02"/%3E%3C/svg%3E');
+    --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }

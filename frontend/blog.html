@@ -15,40 +15,48 @@
     <!-- Fixed Neural Network Background — same animation as homepage, sticky on scroll -->
     <canvas id="neural-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
 
-    <header style="position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; background: var(--bg-glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color);">
-        <div class="container" style="padding: 1rem 0; display: flex; align-items: center; flex-wrap: wrap;">
-            <div class="logo" style="margin-right: auto; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.05em;">
-                <a href="index.html" style="color: inherit; text-decoration: none;">JORGE SOTO</a>
+    <header class="floating-nav-container">
+        <div class="glass-card floating-nav">
+            <div class="logo">
+                <a href="index.html">JORGE SOTO</a>
             </div>
             
-            <nav>
-                <ul style="display: flex; gap: 2rem; list-style: none;">
+            <nav id="main-nav">
+                <ul class="nav-links">
                     <li><a href="index.html#philosophy">Philosophy</a></li>
                     <li><a href="index.html#work">Work</a></li>
                     <li><a href="blog.html">Blog</a></li>
                 </ul>
             </nav>
 
-            <button id="theme-toggle-btn" class="theme-toggle" onclick="window.toggleTheme()" type="button" title="Toggle theme" aria-label="Toggle theme" style="display: flex; align-items: center; justify-content: center; margin-left: 2rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1.5em" height="1.5em" fill="currentColor" stroke-linecap="round" class="theme-toggle__classic" viewBox="0 0 32 32">
-                    <clipPath id="theme-toggle__classic__cutout">
-                        <path d="M0-5h30a1 1 0 0 0 9 13v24H0Z" />
-                    </clipPath>
-                    <g clip-path="url(#theme-toggle__classic__cutout)">
-                        <circle cx="16" cy="16" r="9.34" />
-                        <g stroke="currentColor" stroke-width="1.5">
-                            <path d="M16 5.5v-4" />
-                            <path d="M16 30.5v-4" />
-                            <path d="M1.5 16h4" />
-                            <path d="M26.5 16h4" />
-                            <path d="m23.4 8.6 2.8-2.8" />
-                            <path d="m5.7 26.3 2.9-2.9" />
-                            <path d="m5.8 5.8 2.8 2.8" />
-                            <path d="m23.4 23.4 2.9 2.9" />
+            <div class="nav-controls">
+                <button id="theme-toggle-btn" class="theme-toggle" onclick="window.toggleTheme()" type="button" title="Toggle theme" aria-label="Toggle theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1.5em" height="1.5em" fill="currentColor" stroke-linecap="round" class="theme-toggle__classic" viewBox="0 0 32 32">
+                        <clipPath id="theme-toggle__classic__cutout">
+                            <path d="M0-5h30a1 1 0 0 0 9 13v24H0Z" />
+                        </clipPath>
+                        <g clip-path="url(#theme-toggle__classic__cutout)">
+                            <circle cx="16" cy="16" r="9.34" />
+                            <g stroke="currentColor" stroke-width="1.5">
+                                <path d="M16 5.5v-4" />
+                                <path d="M16 30.5v-4" />
+                                <path d="M1.5 16h4" />
+                                <path d="M26.5 16h4" />
+                                <path d="m23.4 8.6 2.8-2.8" />
+                                <path d="m5.7 26.3 2.9-2.9" />
+                                <path d="m5.8 5.8 2.8 2.8" />
+                                <path d="m23.4 23.4 2.9 2.9" />
+                            </g>
                         </g>
-                    </g>
-                </svg>
-            </button>
+                    </svg>
+                </button>
+
+                <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -80,7 +88,7 @@
 
             <!-- Card-style template — mirrors project-card-template -->
             <template id="blog-post-template">
-                <article style="background: var(--bg-glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <article class="glass-card" style="padding: 2rem;">
                     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
                         <span class="blog-category" style="color: var(--accent-main); font-size: 0.9rem; font-weight: 600;"><!-- Category --></span>
                         <span class="blog-date" style="color: var(--text-muted); font-size: 0.8rem;"><!-- Date --></span>

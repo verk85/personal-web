@@ -73,7 +73,7 @@ class Particle {
                 const forceDirectionX = dx / distance;
                 const forceDirectionY = dy / distance;
                 const force = (config.mouseDistance - distance) / config.mouseDistance;
-                const direction = -1; 
+                const direction = 1; /* 1 = Attract, -1 = Repel */
                 this.vx += forceDirectionX * force * 0.05 * direction;
                 this.vy += forceDirectionY * force * 0.05 * direction;
             }
