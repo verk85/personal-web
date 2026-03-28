@@ -1,6 +1,6 @@
 ---
 title: Life is a video game
-description: How I started treating life as a video game and how it changed my life.
+description: How applying video game mechanics, resource management, and embracing side quests transformed my approach to personal growth and self-discovery.
 category: Slice of Life
 date: March 26, 2026
 tags: [gaming, personal growth, self-improvement, adhd]

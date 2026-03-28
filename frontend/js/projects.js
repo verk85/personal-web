@@ -3,7 +3,7 @@ const projectsData = [
         title: "Williams-Sonoma",
         description: "Senior software engineer working as Contractor for 5+ years for Williams-Sonoma ecommerce platforms.",
         previewText: "WSI",
-        link: "https://www.williams-sonomainc.com/"
+        link: "https://www.linkedin.com/in/jorgesoto85/"
     },
     // {
     //     title: "Astrocheese Studios",
