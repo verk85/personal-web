@@ -137,9 +137,9 @@
         grid-template-columns: 1fr !important; 
     }
     
-    /* Canvas opacity handled by JS, do not reduce here or it becomes invisible */
+    /* Reduce opacity for mobile so text remains strictly readable over the neural nodes */
     canvas#neural-canvas {
-        opacity: 0.8 !important; 
+        opacity: 0.45 !important; 
     }
 }
 

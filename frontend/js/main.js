@@ -4,6 +4,19 @@
 let blogData = [];
 
 document.addEventListener('DOMContentLoaded', async () => {
+    // // Calculate dynamic header space for balanced padding
+    // function calculateHeaderSpace() {
+    //     const floatingNav = document.querySelector('.floating-nav');
+    //     if (floatingNav) {
+    //         const rect = floatingNav.getBoundingClientRect();
+    //         // Total space = exact top offset + nav height + exactly mirroring that same top offset below the nav
+    //         const totalSpace = rect.top + rect.height + rect.top;
+    //         document.documentElement.style.setProperty('--header-height', `${totalSpace}px`);
+    //     }
+    // }
+    // window.addEventListener('resize', calculateHeaderSpace);
+    // calculateHeaderSpace();
+
     // Mobile Navigation Toggle
     const nav = document.getElementById('main-nav');
     const menuBtn = document.getElementById('mobile-menu-btn');
