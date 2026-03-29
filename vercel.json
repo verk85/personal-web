@@ -1,5 +1,5 @@
 {
     "buildCommand": "node ../scripts/build-blog.js",
-    "outputDirectory": "frontend",
+    "outputDirectory": ".",
     "installCommand": ""
 }
